@@ -1,5 +1,7 @@
 from __future__ import unicode_literals
 
-from django.db import models
+from mezzanine.pages.models import Page, RichText
 
-# Create your models here.
+
+class About(Page, RichText):
+    pass
