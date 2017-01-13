@@ -2,8 +2,15 @@
 {% load pages_tags mezzanine_tags i18n staticfiles %}
 
 {% block meta_title %}{% if page.seo_title %}{{ page.seo_title }}{% else %}{{ page.title }}{% endif %}{% endblock %}
-{% block title %}{{ page.title }}{% endblock %}
+
+{% block title %}
+{% editable page.title %}
+{% endeditable %}
+{% endblock %}
 
 {% block main %}
-<h5>{{ page.description }}<h5>
+<p>
+{% editable page.description %}
+{% endeditable %}
+</p>
 {% endblock %}
