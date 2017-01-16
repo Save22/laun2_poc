@@ -9,8 +9,9 @@
 {% endblock %}
 
 {% block main %}
-<p>
-{% editable page.description %}
+
+{% editable page.about.content %}
+{{ page.about.content|richtext_filters|safe }}
 {% endeditable %}
-</p>
+
 {% endblock %}
