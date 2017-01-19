@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load mezzanine_tags %}
+
+{% block headbanner %}
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <ul class="rslides">
+          {% for image in slide %}
+            <li>
+              <img src="{{ MEDIA_URL }}{% thumbnail image.slide_image 940 300 %}" alt="{{
+              image.title }}"/>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block main %}
+    <h1> Hi! `</h2>
+    {{ context }}
+    {% for content in context %}
+        <div>
+        {% editable content.promo_name %}
+            Promo Name: {{ content.promo_name }}<br>
+        {% endeditable %}
+        {% editable content.promo_category %}
+            Promo Category: {{ content.promo_category }}<br>
+        {% endeditable %}
+        {% editable content.promo_image %}
+          Promo Image: {{MEDIA_URL}}{{ content.promo_image }} <br>
+            <img src='{{MEDIA_URL}}{{ content.promo_image}}'/>
+        {% endeditable %}
+        </div>
+    {% endfor %}
+
+
+  <script>
+    $(function() {
+      $('.rslides').responsiveSlides();
+    });
+  </script>
+
+{% endblock %}
