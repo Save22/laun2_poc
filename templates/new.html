@@ -10,6 +10,11 @@
             <li>
               <img src="{{ MEDIA_URL }}{% thumbnail image.slide_image 940 300 %}" alt="{{
               image.title }}"/>
+             {% if image.caption %}
+                {% editable image.caption %}
+                <p class="caption">{{ image.caption|safe }}</p>
+                {% endeditable %}
+            {% endif %} 
             </li>
           {% endfor %}
         </ul>
@@ -19,7 +24,6 @@
 {% endblock %}
 
 {% block main %}
-    <h1> Hi! `</h2>
     {{ context }}
     {% for content in context %}
         <div>

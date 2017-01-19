@@ -25,3 +25,4 @@ class Promo(models.Model):
 class SlideImage(Page):
     promo_slide = models.ForeignKey(Promo)
     slide_image = FileField(_('File'), max_length=200, upload_to="Banner Images", format='Image')
+    caption = models.CharField(_('Caption'), blank=True, max_length=200)
