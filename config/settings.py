@@ -63,8 +63,8 @@ SECRET_KEY = get_key('SECRET_KEY')
 # Controls the ordering and grouping of the admin menu.
 #
 ADMIN_MENU_ORDER = (
-     ("Content", ("pages.Page", "blog.BlogPost",
-        "generic.ThreadedComment", (_("Media Library"), "media-library"),)),
+     ("Content", ("pages.Page", "blog.BlogPost", "generic.ThreadedComment",
+                  (_("Media Library"), "media-library"),)),
      ("Site", ("sites.Site", "redirects.Redirect", "conf.Setting")),
      ("Users", ("auth.User", "auth.Group",)),
      ("Manage Promo", ("promo.Promo", "promo.Category",)),
@@ -275,6 +275,7 @@ if DJANGO_VERSION < (1, 9):
 
 INSTALLED_APPS = (
     "promo",
+    "promo_list",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
