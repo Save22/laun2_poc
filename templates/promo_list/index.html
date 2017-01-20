@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load mezzanine_tags staticfiles %}
+{% load mezzanine_tags %}
+{% load pages_tags mezzanine_tags i18n staticfiles %}
+
+{% block main %}
+<div class="row" id="promo_filters">
+    <input  class="form-control" type="text" name="search" placeholder="Search">
+</div>
+
+<div class="row" id="promo_list">
+{% for promo in promos %}
+  <div class="col-md-3">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        {% editable promo.title %}
+        <h3 class="panel-title">
+          <a href="http://161.202.30.89:8064/{{ promo.slug }}">
+          {{ promo.title }}
+          </a>
+        </h3>
+        {% endeditable %}
+      </div>
+      <div class="panel-body">
+        {% editable promo.promo_image %}
+        <img src = "{{ MEDIA_URL }}{{ promo.promo_image }}" class="img-responsive">
+        {% endeditable %}
+      </div>
+      <div class="panel-footer">
+        {% editable promo.content %}
+        {% endeditable %}
+      </div>
+    </div>
+  </div>
+{% endfor %}
+</div>
+{% endblock %}
