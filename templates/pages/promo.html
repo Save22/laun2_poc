@@ -1,0 +1,44 @@
+{% extends "base.html" %} 
+
+{% load mezzanine_tags staticfiles %}
+{% load mezzanine_tags %}
+{% load pages_tags mezzanine_tags i18n staticfiles %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static "mezzanine/css/magnific-popup.css" %}">
+{% endblock extra_css %}
+
+{% block main %}
+{{ block.super }}
+
+
+<div class="gallery row">
+{% with promo_page as p %}
+<div class="col-xs-4 col-sm-3">
+    <h4>
+        <br>
+        {% editable p.title %}
+        {% endeditable %}
+    </h4><br>
+    {% editable p.promo_image %}
+    <img src = "{{ MEDIA_URL }}{% thumbnail p.promo_image 100 300 %}">
+    {% endeditable %}
+    <br>
+    {% editable p.promo_category %}
+    <text><b>{{ p.promo_category }}</b></text><br>
+    {% endeditable %}
+    <text>
+        {% editable p.content %}
+        {% endeditable %}
+    </text>
+    {% blocktrans %}
+        
+    {% endblocktrans %}
+</div>
+{% endwith %}
+</div>
+{% endblock %}
+
+{% block extra_js %}
+{{ block.super }}
+{% endblock %}

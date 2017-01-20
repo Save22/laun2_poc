@@ -62,12 +62,13 @@ SECRET_KEY = get_key('SECRET_KEY')
 
 # Controls the ordering and grouping of the admin menu.
 #
-# ADMIN_MENU_ORDER = (
-#     ("Content", ("pages.Page", "blog.BlogPost",
-#        "generic.ThreadedComment", (_("Media Library"), "media-library"),)),
-#     ("Site", ("sites.Site", "redirects.Redirect", "conf.Setting")),
-#     ("Users", ("auth.User", "auth.Group",)),
-# )
+ADMIN_MENU_ORDER = (
+     ("Content", ("pages.Page", "blog.BlogPost",
+        "generic.ThreadedComment", (_("Media Library"), "media-library"),)),
+     ("Site", ("sites.Site", "redirects.Redirect", "conf.Setting")),
+     ("Users", ("auth.User", "auth.Group",)),
+     ("Manage Promo", ("promo.Promo", "promo.Category",)),
+ )
 
 # A three item sequence, each containing a sequence of template tags
 # used to render the admin dashboard.
@@ -85,11 +86,11 @@ SECRET_KEY = get_key('SECRET_KEY')
 # menus a page should appear in. Note that if a menu template is used
 # that doesn't appear in this setting, all pages will appear in it.
 
-# PAGE_MENU_TEMPLATES = (
-#     (1, _("Top navigation bar"), "pages/menus/dropdown.html"),
-#     (2, _("Left-hand tree"), "pages/menus/tree.html"),
-#     (3, _("Footer"), "pages/menus/footer.html"),
-# )
+PAGE_MENU_TEMPLATES = (
+     (1, _("Top navigation bar"), "pages/menus/dropdown.html"),
+     (2, _("Left-hand tree"), "pages/menus/tree.html"),
+     (3, _("Footer"), "pages/menus/footer.html"),
+)
 
 # A sequence of fields that will be injected into Mezzanine's (or any
 # library's) models. Each item in the sequence is a four item sequence.
@@ -273,6 +274,7 @@ if DJANGO_VERSION < (1, 9):
 ################
 
 INSTALLED_APPS = (
+    "promo",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
