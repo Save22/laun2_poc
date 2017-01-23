@@ -18,3 +18,16 @@ class Index(View):
         context = self.get_context_data()
         return render(request, self.template_name, context)
 
+
+class Banner(View):
+    template_name = 'index.html'
+
+    def get_context_data(self):
+        context = {
+            'context': Promo.objects.all(),
+            'slide': SlideImage.objects.all(),
+        }
+        return context
+    def get(self, request, *args, **kwargs):
+        context = self.get_context_data()
+        return render(request, self.template_name, context)

@@ -19,7 +19,7 @@ urlpatterns = i18n_patterns(
     # Change the admin prefix here to use an alternate URL for the
     # admin interface, which would be marginally more secure.
     url("^admin/", include(admin.site.urls)),
-    url(r'^new/', include('laun2.urls')),
+    url(r'', include('laun2.urls')),
 )
 
 if settings.USE_MODELTRANSLATION:
