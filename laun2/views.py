@@ -17,3 +17,4 @@ class Index(View):
     def get(self, request, *args, **kwargs):
         context = self.get_context_data()
         return render(request, self.template_name, context)
+

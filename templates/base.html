@@ -72,6 +72,9 @@
 </div>
 </div>
 
+{% block headbanner %}
+{% endblock %}
+
 <div class="container">
 
 {% nevercache %}
@@ -86,8 +89,6 @@
 </div>
 {% endif %}
 {% endnevercache %}
-{% block headbanner %}
-{% endblock %}
 
 <h1>{% block title %}{% endblock %}</h1>
 
