@@ -4,6 +4,20 @@
 
 {% if branch_level == 0 %}
 <ul class="nav navbar-nav">
+    <li class="dropdown">
+        <a href="#" data-toggle="category-list">
+            Categories<b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu" id="category-list">
+            {% for cat in category %}
+            <li>
+                <a href="http://161.202.30.89:8080/{{ cat.slug }}">
+                    {{ cat.title }}
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </li>
     {% for page in page_branch %}
     {% if not has_home and page.is_primary and forloop.first %}
     <li{% if on_home %} class="active"{% endif %} id="dropdown-menu-home">
@@ -41,6 +55,5 @@
     {% endfor %}
 </ul>
 {% endif %}
-{{ category }}
 {% endif %}
 {% endspaceless %}
