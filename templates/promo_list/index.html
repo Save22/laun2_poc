@@ -4,10 +4,9 @@
 {% load pages_tags mezzanine_tags i18n staticfiles %}
 
 {% block main %}
-<div class="row" id="promo_filters">
-    <input  class="form-control" type="text" name="search" placeholder="Search">
+<div class="row" id="promo_search">
+{% search_form "promo.Promo" %}
 </div>
-
 <div class="row" id="promo_list">
 {% for promo in promos %}
   <div class="col-md-3">
