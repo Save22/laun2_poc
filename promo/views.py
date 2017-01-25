@@ -6,7 +6,7 @@ from .models import Category
 
 
 class Dropdown(View):
-    template_name = 'index.html'
+    template_name = 'base.html'
 
     def get_context_data(self):
         context = {

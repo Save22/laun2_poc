@@ -6,12 +6,14 @@ from .models import Category, Promo
 def promo_list(request, page):
     promo = Promo.objects.filter(promo_category=page.category)
     return {
-        'promo': promo
+        'promo': promo,
+        'category': Category.objects.all()
     }
 
 @processor_for(Category, Promo)
 def promo_list(request, page):
     promo_page = Promo.objects.filter(title=page.title)
     return {
-        'promo_page': promo_page
+        'promo_page': promo_page,
+        'category': Category.objects.all()
     }
