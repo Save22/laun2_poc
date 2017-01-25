@@ -33,10 +33,10 @@
       <li class="dropdown-header">Categories</li>
       {% get_categories as categories %}
       {% for cat in categories %}
-      <li><a href="{{ cat.slug }}">{{ cat.title }}</a></li>
+      <li><a href="{% url 'page' cat.slug %}">{{ cat.title }}</a></li>
       {% endfor %}
       <li role="separator" class="divider"></li>
-      <li><a href="{% url 'promos' %}">View all Promos</a></li>
+      <li><a href="{% url 'promo_list:promos' %}">View all Promos</a></li>
     </ul>
   </li>
 </ul>
