@@ -11,31 +11,34 @@
 {% block main %}
 {{ block.super }}
 
+<head>
+     {% block meta_title %}{% if page %}{{ page.meta_title }}{% endif %}{% endblock %}
+</head>
 
 <div class="gallery row">
-{% with promo_page as p %}
+
 <div class="col-xs-4 col-sm-3">
     <h4>
         <br>
-        {% editable p.title %}
+        {% editable page.promo.title %}
         {% endeditable %}
     </h4><br>
-    {% editable p.promo_image %}
-    <img src = "{{ MEDIA_URL }}{% thumbnail p.promo_image 100 300 %}">
+    {% editable page.promo.promo_image %}
+    <img src = "{{ MEDIA_URL }}{% thumbnail page.promo.promo_image 100 300 %}">
     {% endeditable %}
     <br>
-    {% editable p.promo_category %}
-    <text><b>{{ p.promo_category }}</b></text><br>
+    {% editable page.promo.promo_category %}
+    <text><b>{{ page.promo.promo_category }}</b></text><br>
     {% endeditable %}
     <text>
-        {% editable p.content %}
+        {% editable page.promo.content %}
         {% endeditable %}
     </text>
     {% blocktrans %}
         
     {% endblocktrans %}
 </div>
-{% endwith %}
+
 </div>
 {% endblock %}
 

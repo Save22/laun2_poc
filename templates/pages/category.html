@@ -11,13 +11,18 @@
 {% block main %}
 {{ block.super }}
 
-
+<head>
+     {% block meta_title %}{% if page %}{{ page.meta_title }}{% endif %}{% endblock %}
+</head>
 <div class="gallery row">
 {% with promo as pic %}
 {% for p in pic %}
 <div class="col-xs-4 col-sm-3">
     <h4>
         {% editable p.title %}
+            <a href="{% url 'page' p.slug %}">
+                {{ p.title }}
+            </a>
         {% endeditable %}
     </h4><br>
     {% editable p.promo_image %}
