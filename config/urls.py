@@ -19,6 +19,7 @@ urlpatterns = i18n_patterns(
     # Change the admin prefix here to use an alternate URL for the
     # admin interface, which would be marginally more secure.
     url("^admin/", include(admin.site.urls)),
+    url("", include("promo_list.urls")),
 )
 
 if settings.USE_MODELTRANSLATION:
