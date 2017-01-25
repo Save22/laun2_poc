@@ -2,7 +2,7 @@ from django.shortcuts import render
 
 from django.views.generic import View
 
-from .models import Promo, SlideImage
+from .models import  SlideImage
 # Create your views here.
 
 class Index(View):
@@ -10,7 +10,6 @@ class Index(View):
 
     def get_context_data(self):
         context = {
-            'context': Promo.objects.all(),
             'slide': SlideImage.objects.all(),
         }
         return context
@@ -24,7 +23,6 @@ class Banner(View):
 
     def get_context_data(self):
         context = {
-            'context': Promo.objects.all(),
             'slide': SlideImage.objects.all(),
         }
         return context

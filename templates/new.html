@@ -32,7 +32,7 @@
                     <!-- Set the first background image using inline CSS below. -->
                     <div class="fill" style="background-image:url('..{{MEDIA_URL}}{{ image.slide_image }}');"></div>
                     <div class="carousel-caption">
-                        {% editable image.caption %}<h2>{{ image.caption}}</h2>{% endeditable %}
+                        <h2 style="color:black;">{% editable image.slide_image image.caption  %}{{ image.caption}}{% endeditable %}</h2>
                     </div>
                 </div>
             {% else %}
@@ -41,7 +41,12 @@
                     <div class="fill" style="background-image:url('..{{MEDIA_URL}}{{ image.slide_image }}');">
                     </div>
                     <div class="carousel-caption">
-                        <h2>{% editable image.caption %}{{ image.caption|safe }}{% endeditable %}</h2>
+                        {% editable image.slide_image  %}
+                        <h2 style ="display:none">
+                            asdasd
+                        </h2>
+                        {% endeditable %}
+                        <h2 style="color:black;">{% editable image.slide_image  image.caption %}{{ image.caption|safe }}{% endeditable %}</h2>
                     </div>
                 </div>
             {% endif %}
@@ -81,14 +86,27 @@
     <!-- Bootstrap Core JavaScript -->
     <script src="{% static "js/bootstrap.min.js" %}"></script>
 
-    <script src="{% static "js/slick.js" %}" type="text/javascript" charset="utf-8"></script>
     <!-- Script to Activate the Carousel -->
-    <script>
+    <script type="text/javascript">
+    $(document).keyup(function(e){
+        if(e.keyCode == 27){
+            $('.carousel').carousel('cycle');
+            $("#myCarousel").css("z-index", "10")
+        }
+    });
     $('.carousel').carousel({
+        pause: "false",
         interval: 5000 //changes the speed
     })
+    $('.editable-link').on('click', function(){
+        $("#myCarousel").css("z-index", "9999")
+        $('.carousel').carousel('pause');
+    });
+    $("input[value='Cancel']").on('click', function(){
+        $('.carousel').carousel('cycle');
+        $("#myCarousel").css("z-index", "10")
+    });
     </script>
-
 
 {% include "includes/footer_scripts.html" %}
 {% endblock %}
