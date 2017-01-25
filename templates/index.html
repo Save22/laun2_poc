@@ -1,27 +1,70 @@
 {% extends "base.html" %}
 {% load pages_tags mezzanine_tags i18n staticfiles %}
-{% block headbanner %}
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-12">
-        <ul class="rslides">
-          {% for image in slide %}
-            <li>
-              <img src="{{ MEDIA_URL }}{% thumbnail image.slide_image 940 300 %}" alt="{{
-              image.title }}"/>
-             {% if image.caption %}
-                {% editable image.caption %}
-                <p class="caption">{{ image.caption|safe }}</p>
-                {% endeditable %}
-                {% editable_loader %}
-            {% endif %} 
-            </li>
-          {% endfor %}
-        </ul>
-      </div>
-    </div>
-  </div>
+{% block extra_css %}
+    <!-- Bootstrap Core CSS -->
+    <link href="{% static "css/bootstrap.min.css" %}" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="{% static "css/full-slider.css" %}" rel="stylesheet">
 {% endblock %}
+{% block extra_js %}
+    <script type="text/javascript" src="{% static "filebrowser/js/AddFileBrowser.js"%}"> </script>
+{% endblock %}
+
+
+{% block headbanner %}
+    <!-- Half Page Image Background Carousel Header -->
+    <header id="myCarousel" class="carousel slide">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+          {% for image in slide %}
+            {% if forloop.counter0 == 0 %}
+                <li data-target="#myCarousel" data-slide-to="{{ forloop.counter0 }}" class="active"></li>
+            {% else %}
+                <li data-target="#myCarousel" data-slide-to="{{ forloop.counter0  }}"></li>
+            {% endif %}
+          {% endfor %}
+        </ol>
+
+        <!-- Wrapper for Slides -->
+        <div class="carousel-inner">
+          {% for image in slide %}
+            {% if forloop.counter0 == 0 %}
+                <div class="item active">
+                    <!-- Set the first background image using inline CSS below. -->
+                    <div class="fill" style="background-image:url('..{{MEDIA_URL}}{{ image.slide_image }}');"></div>
+                    <div class="carousel-caption">
+                        <h2 style="color:black;">{% editable image.slide_image image.caption  %}{{ image.caption}}{% endeditable %}</h2>
+                    </div>
+                </div>
+            {% else %}
+                <div class="item">
+                    <!-- Set the second background image using inline CSS below. -->
+                    <div class="fill" style="background-image:url('..{{MEDIA_URL}}{{ image.slide_image }}');">
+                    </div>
+                    <div class="carousel-caption">
+                        {% editable image.slide_image  %}
+                        <h2 style ="display:none">
+                            asdasd
+                        </h2>
+                        {% endeditable %}
+                        <h2 style="color:black;">{% editable image.slide_image  image.caption %}{{ image.caption|safe }}{% endeditable %}</h2>
+                    </div>
+                </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+
+        <!-- Controls -->
+        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+            <span class="icon-prev"></span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+            <span class="icon-next"></span>
+        </a>
+
+    </header>
+{% endblock %}
+
 {% block meta_title %}{% trans "Home" %}{% endblock %}
 {% block title %}{% trans "Home" %}{% endblock %}
 
@@ -45,13 +88,38 @@
 </ul>
 
 
-
-  <script>
-    $(function() {
-      $('.rslides').responsiveSlides();
-    });
-  </script>
 {% endblocktrans %}
 {% endblock %}
 
+{% block footer_js %}
+    <!-- jQuery -->
+    <script src="{% static "js/jquery.js" %}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{% static "js/bootstrap.min.js" %}"></script>
+
+    <!-- Script to Activate the Carousel -->
+    <script type="text/javascript">
+    $(document).keyup(function(e){
+        if(e.keyCode == 27){
+            $('.carousel').carousel('cycle');
+            $("#myCarousel").css("z-index", "10")
+        }
+    });
+    $('.carousel').carousel({
+        pause: "false",
+        interval: 5000 //changes the speed
+    })
+    $('.editable-link').on('click', function(){
+        $("#myCarousel").css("z-index", "9999")
+        $('.carousel').carousel('pause');
+    });
+    $("input[value='Cancel']").on('click', function(){
+        $('.carousel').carousel('cycle');
+        $("#myCarousel").css("z-index", "10")
+    });
+    </script>
+
+{% include "includes/footer_scripts.html" %}
+{% endblock %}
 
