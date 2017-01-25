@@ -13,6 +13,7 @@
                 {% editable image.caption %}
                 <p class="caption">{{ image.caption|safe }}</p>
                 {% endeditable %}
+                {% editable_loader %}
             {% endif %} 
             </li>
           {% endfor %}
@@ -45,6 +46,11 @@
 
 
 
+  <script>
+    $(function() {
+      $('.rslides').responsiveSlides();
+    });
+  </script>
 {% endblocktrans %}
 {% endblock %}
 
