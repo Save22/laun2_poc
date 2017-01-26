@@ -1,10 +1,10 @@
-from copy import deepcopy
 from django.contrib import admin
 
 from mezzanine.pages.admin import PageAdmin
 from .models import SlideImage
 
 # Register your models here.
+
 
 class SlideImageAdmin(PageAdmin):
     model = SlideImage

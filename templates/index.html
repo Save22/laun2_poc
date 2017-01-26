@@ -1,8 +1,6 @@
 {% extends "base.html" %}
 {% load pages_tags mezzanine_tags i18n staticfiles %}
 {% block extra_css %}
-    <!-- Bootstrap Core CSS -->
-    <link href="{% static "css/bootstrap.min.css" %}" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="{% static "css/full-slider.css" %}" rel="stylesheet">
 {% endblock %}
@@ -33,7 +31,7 @@
                     <!-- Set the first background image using inline CSS below. -->
                     <div class="fill" style="background-image:url('..{{MEDIA_URL}}{{ image.slide_image }}');"></div>
                     <div class="carousel-caption">
-                        <h2 style="color:black;">{% editable image.slide_image image.caption  %}{{ image.caption}}{% endeditable %}</h2>
+                        <h2>{% editable image.slide_image image.caption  %}{{ image.caption}}{% endeditable %}</h2>
                     </div>
                 </div>
             {% else %}
@@ -42,12 +40,7 @@
                     <div class="fill" style="background-image:url('..{{MEDIA_URL}}{{ image.slide_image }}');">
                     </div>
                     <div class="carousel-caption">
-                        {% editable image.slide_image  %}
-                        <h2 style ="display:none">
-                            asdasd
-                        </h2>
-                        {% endeditable %}
-                        <h2 style="color:black;">{% editable image.slide_image  image.caption %}{{ image.caption|safe }}{% endeditable %}</h2>
+                        <h2>{% editable image.slide_image  image.caption %}{{ image.caption|safe }}{% endeditable %}</h2>
                     </div>
                 </div>
             {% endif %}
@@ -69,7 +62,6 @@
 {% block title %}{% trans "Home" %}{% endblock %}
 
 {% block main %}
-{{ slide }}
 {% blocktrans %}
 <h2>Congratulations!</h2>
 <p>
@@ -100,6 +92,9 @@
 
     <!-- Script to Activate the Carousel -->
     <script type="text/javascript">
+    $(".editable-form").hide(function(){
+        console.log("von");
+    });
     $(document).keyup(function(e){
         if(e.keyCode == 27){
             $('.carousel').carousel('cycle');
@@ -112,6 +107,7 @@
     })
     $('.editable-link').on('click', function(){
         $("#myCarousel").css("z-index", "9999")
+        $(".charfield").css("color", "black")
         $('.carousel').carousel('pause');
     });
     $("input[value='Cancel']").on('click', function(){
