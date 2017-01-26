@@ -2,8 +2,9 @@ from django.shortcuts import render
 
 from django.views.generic import View
 
-from .models import  SlideImage
+from .models import SlideImage
 # Create your views here.
+
 
 class Index(View):
     template_name = 'new.html'
@@ -13,6 +14,7 @@ class Index(View):
             'slide': SlideImage.objects.all(),
         }
         return context
+
     def get(self, request, *args, **kwargs):
         context = self.get_context_data()
         return render(request, self.template_name, context)
@@ -26,7 +28,7 @@ class Banner(View):
             'slide': SlideImage.objects.all(),
         }
         return context
+
     def get(self, request, *args, **kwargs):
         context = self.get_context_data()
         return render(request, self.template_name, context)
-
