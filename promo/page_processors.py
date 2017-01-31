@@ -7,5 +7,4 @@ def promo_list(request, page):
     promo = Promo.objects.filter(promo_category=page.category)
     return {
         'promo': promo,
-        'category': Category.objects.all()
     }

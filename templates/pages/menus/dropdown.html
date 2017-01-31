@@ -24,7 +24,7 @@
         <a href="{% url "home" %}">{% trans "Home" %}</a>
     </li>
     {% endif %}
-    {% if page.in_menu and not page.category %}
+    {% if page.in_menu and not page.category and not page.promo %}
     <li class="{% if page.has_children_in_menu %}dropdown{% endif %}
                {% if page.is_current_or_ascendant %}active{% endif %}"
         id="{{ page.html_id }}">

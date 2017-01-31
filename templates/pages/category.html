@@ -14,6 +14,9 @@
 <head>
      {% block meta_title %}{% if page %}{{ page.meta_title }}{% endif %}{% endblock %}
 </head>
+{% block content %}
+    {{ page.category.description }}
+{% endblock%}
 <div class="gallery row">
 {% with promo as pic %}
 {% for p in pic %}
