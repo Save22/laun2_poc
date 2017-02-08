@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load pages_tags mezzanine_tags i18n staticfiles %}
+
+{% block meta_title %}{% if page.seo_title %}{{ page.seo_title }}{% else %}{{ page.title }}{% endif %}{% endblock %}
+
+{% block title %}
+{% editable page.title %}
+{% endeditable %}
+{% endblock %}
+
+{% block main %}
+
+{% editable page.about.content %}
+{{ page.about.content|richtext_filters|safe }}
+{% endeditable %}
+
+{% endblock %}
