@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "base.html" %} 
 
 {% load mezzanine_tags staticfiles %}
 {% load mezzanine_tags %}
@@ -14,34 +14,31 @@
 <head>
      {% block meta_title %}{% if page %}{{ page.meta_title }}{% endif %}{% endblock %}
 </head>
+
 <div class="gallery row">
-{% with coupon as pic %}
-{% for p in pic %}
+
 <div class="col-xs-4 col-sm-3">
     <h4>
-        {% editable p.title %}
-            <a href="{% url 'page' p.slug %}">
-                {{ p.title }}
-            </a>
+        <br>
+        {% editable page.coupon.title %}
         {% endeditable %}
     </h4><br>
-    {% editable p.coupon_image %}
-    <img src = "{{ MEDIA_URL }}{% thumbnail p.coupon_image 100 300 %}">
+    {% editable page.coupon.coupon_image %}
+    <img src = "{{ MEDIA_URL }}{% thumbnail page.coupon.coupon_image 100 300 %}">
     {% endeditable %}
     <br>
-    {% editable p.coupon_category %}
-    <text><b>{{ p.coupon_category }}</b></text><br>
+    {% editable page.coupon.coupon_category %}
+    <text><b>{{ page.coupon.coupon_category }}</b></text><br>
     {% endeditable %}
     <text>
-        {% editable p.content %}
+        {% editable page.coupon.content %}
         {% endeditable %}
     </text>
     {% blocktrans %}
-
+        
     {% endblocktrans %}
 </div>
-{% endfor %}
-{% endwith %}
+
 </div>
 {% endblock %}
 

@@ -276,6 +276,7 @@ INSTALLED_APPS = (
     "about",
     "promo",
     "promo_list",
+    "coupon",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
