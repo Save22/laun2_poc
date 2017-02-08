@@ -275,6 +275,7 @@ if DJANGO_VERSION < (1, 9):
 INSTALLED_APPS = (
     "about",
     "promo",
+    "promo_list",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",

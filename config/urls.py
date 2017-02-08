@@ -20,6 +20,7 @@ urlpatterns = i18n_patterns(
     # admin interface, which would be marginally more secure.
     url("^admin/", include(admin.site.urls)),
     url(r'', include('laun2.urls')),
+    url("", include("promo_list.urls", namespace="promo_list")),
 )
 
 if settings.USE_MODELTRANSLATION:
